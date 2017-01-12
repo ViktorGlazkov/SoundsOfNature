@@ -1,4 +1,4 @@
-package com.dev.viktorg.soundsofnature.model;
+package com.dev.viktorg.soundsofnature.model.entity;
 
 import android.content.Context;
 
@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EntityService {
+    public static List<Entity> getEntities(Context context, String type) {
+        return type.equals("animal") ? getAnimals(context) : getTransport(context);
+    }
+
     public static List<Entity> getAnimals(Context current) {
         Animals[] animals = Animals.values();
         List<Entity> animalList = new ArrayList<>();

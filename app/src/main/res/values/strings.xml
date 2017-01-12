@@ -1,18 +1,7 @@
 <resources>
     <string name="app_name">SoundsOfNature</string>
-    <string-array name="animals">
-        <item>cat</item>
-        <item>chicken</item>
-        <item>cow</item>
-        <item>dog</item>
-        <item>elephant</item>
-        <item>frog</item>
-        <item>horse</item>
-        <item>lion</item>
-        <item>monkey</item>
-        <item>pig</item>
-        <item>sheep</item>
-        <item>tiger</item>
-    </string-array>
+    <string name="text_tab1">Animals</string>
+    <string name="text_tab2">Transport</string>
     <string name="title_activity_listener">Listener</string>
+    <string name="text_tab_header">Свой заголовок</string>
 </resources>

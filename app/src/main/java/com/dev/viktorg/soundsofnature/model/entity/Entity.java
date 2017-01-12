@@ -1,4 +1,4 @@
-package com.dev.viktorg.soundsofnature.model;
+package com.dev.viktorg.soundsofnature.model.entity;
 
 import android.content.Context;
 
@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Entity {
-    protected Context context;
-    protected String name;
-    protected int imageId;
-    protected List<Integer> audioIds;
+    private Context context;
+    private String name;
+    private int imageId;
+    private List<Integer> audioIds;
 
     public Entity(Context current, String name) {
         this.context = current;
@@ -33,21 +33,20 @@ public abstract class Entity {
 
     private void setAudioIds() {
         audioIds = new ArrayList<>();
-        for (Integer i = 1; ; i++) {
-            int id = context.getResources().getIdentifier(name, "raw", context.getPackageName());
-            if (id != 0) {
-                audioIds.add(id);
-                break;
-            }
+        int id = context.getResources().getIdentifier(name, "raw", context.getPackageName());
 
+        if (id != 0) {
+            audioIds.add(id);
+
+        } else {
+            Integer i = 1;
             id = context.getResources().getIdentifier(name + "_" + i.toString(), "raw",
                     context.getPackageName());
-
-            if (id == 0) {
-                break;
-
-            } else {
+            while(id != 0) {
                 audioIds.add(id);
+                i++;
+                id = context.getResources().getIdentifier(name + "_" + i.toString(), "raw",
+                        context.getPackageName());
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.dev.viktorg.soundsofnature.model;
+package com.dev.viktorg.soundsofnature.model.entity;
 
 
 import java.util.ArrayList;
