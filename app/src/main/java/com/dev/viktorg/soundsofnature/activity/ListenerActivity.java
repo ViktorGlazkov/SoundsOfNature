@@ -1,68 +1,43 @@
 package com.dev.viktorg.soundsofnature.activity;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.dev.viktorg.soundsofnature.R;
-import com.dev.viktorg.soundsofnature.adapter.CustomListAdapter;
-import com.dev.viktorg.soundsofnature.model.entity.Entity;
-import com.dev.viktorg.soundsofnature.model.entity.EntityList;
-import com.dev.viktorg.soundsofnature.model.entity.EntityService;
+import com.dev.viktorg.soundsofnature.service.ListViewService;
+import com.dev.viktorg.soundsofnature.service.MediaPlayerService;
+import com.dev.viktorg.soundsofnature.model.ModelList;
+import com.dev.viktorg.soundsofnature.model.ModelService;
 
 public class ListenerActivity extends Activity {
-    ListView listView;
-    MediaPlayer mPlayer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_litener);
 
-        Intent intent = getIntent();
-        final EntityList entityList = new EntityList(EntityService.getEntities(this, intent.getType()));
+        ModelList modelList = new ModelList(ModelService.getModels(this,
+                getIntent().getType()));
 
-        CustomListAdapter adapter = new CustomListAdapter(this, entityList.getNames(),
-                entityList.getImageIds());
-        listView = (ListView) findViewById(R.id.list);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                if (mPlayer != null) {
-                    mPlayer.stop();
-                }
-
-                final Entity entity = entityList.get(position);
-
-                final int[] i = {0};
-                mPlayer = MediaPlayer.create(ListenerActivity.this, entity.getAudioIds().get(i[0]++));
-                mPlayer.start();
-                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        if(i[0] < entity.getAudioIds().size()) {
-                            mPlayer = MediaPlayer.create(ListenerActivity.this, entity.getAudioIds().get(i[0]++));
-                            mPlayer.start();
-                        }
-                    }
-                });
-            }
-        });
+        ListViewService.setListView(this, modelList.getNames(), modelList.getImageIds(),
+                R.id.list, getListener(modelList));
     }
 
     @Override
-    protected void onPause () {
+    protected void onPause() {
         super.onPause();
-        if (mPlayer != null) {
-            mPlayer.stop();
-        }
+        MediaPlayerService.stopMusic();
+    }
+
+    private AdapterView.OnItemClickListener getListener(final ModelList modelList) {
+        return new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MediaPlayerService.stopMusic();
+                MediaPlayerService.playMusicOfEntity(ListenerActivity.this, modelList.get(position));
+            }
+        };
     }
 }
