@@ -19,6 +19,8 @@ public class QuizService {
 
     public Quiz getQuiz(Context current) {
         List<Model> models = ModelService.getModels(current, "Animals");
+        models.addAll( ModelService.getModels(current, "Transport"));
+
         List<Integer> imageIds = new ArrayList<>();
         List<String> names = new ArrayList<>();
         Set<Integer> ids = new HashSet<>();

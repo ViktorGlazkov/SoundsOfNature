@@ -12,11 +12,11 @@ public class ModelService {
     public static List<Model> getModels(Context context, String type) {
         Resources res = context.getResources();
         return type.equals(res.getString(R.string.animals)) ?
-                getEModels(context, res.getStringArray(R.array.animals)) :
-                getEModels(context, res.getStringArray(R.array.transport));
+                getModels(context, res.getStringArray(R.array.animals)) :
+                getModels(context, res.getStringArray(R.array.transport));
     }
 
-    private static List<Model> getEModels(Context current, String[] names) {
+    private static List<Model> getModels(Context current, String[] names) {
         List<Model> entities = new ArrayList<>();
 
         for (String transport : names) {
