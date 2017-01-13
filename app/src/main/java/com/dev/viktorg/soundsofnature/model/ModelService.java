@@ -1,6 +1,5 @@
 package com.dev.viktorg.soundsofnature.model;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 

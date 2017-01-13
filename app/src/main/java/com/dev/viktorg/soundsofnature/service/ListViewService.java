@@ -11,9 +11,9 @@ import java.util.List;
 
 public class ListViewService {
     public static void setListView(Context context, List<String> names, List<Integer> imageIds,
-                            int viewId, AdapterView.OnItemClickListener onItemClickListener) {
+                                   int viewId, AdapterView.OnItemClickListener onItemClickListener) {
         CustomListAdapter adapter = new CustomListAdapter((Activity) context, names, imageIds);
-        ListView listView = (ListView) (((Activity)context).findViewById(viewId));
+        ListView listView = (ListView) (((Activity) context).findViewById(viewId));
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(onItemClickListener);
     }

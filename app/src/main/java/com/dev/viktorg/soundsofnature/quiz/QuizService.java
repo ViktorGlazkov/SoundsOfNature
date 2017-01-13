@@ -51,14 +51,14 @@ public class QuizService {
         return (int) Math.ceil((double) ((points) / 5)) + 1;
     }
 
-    private void setIds(List<Model> models,List<Integer> imageIds, Set<Integer> ids, List<String> names,
+    private void setIds(List<Model> models, List<Integer> imageIds, Set<Integer> ids, List<String> names,
                         int size) {
         Random rand = new Random();
 
         while (imageIds.size() < size) {
             id = rand.nextInt(models.size());
 
-            if(!ids.contains(id)) {
+            if (!ids.contains(id)) {
                 add(models, imageIds, names, id);
                 ids.add(id);
             }

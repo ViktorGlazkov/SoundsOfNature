@@ -14,7 +14,7 @@ public class DialogService {
     public static void showFailtureDialog(final Context context, int rightId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View newView = inflater.inflate(R.layout.mylist, null);
 
         ImageView imageView = (ImageView) newView.findViewById(R.id.icon);
