@@ -18,4 +18,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, TabActivity.class);
         startActivity(intent);
     }
+
+    public void startQuizActivity(View view) {
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
+    }
 }

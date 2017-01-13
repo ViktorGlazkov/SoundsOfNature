@@ -11,25 +11,30 @@
     tools:context="com.dev.viktorg.soundsofnature.activity.ListenerActivity">
 
     <Button
-        android:text="Listen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/listen_button"
+        android:onClick="startListenerActivity"
+        android:text="Listen"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/listen_button"
-        android:onClick="startListenerActivity"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:elevation="0dp"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog" />
 
     <Button
-        android:text="quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:onClick="startQuizActivity"
+        android:text="Quiz"
         android:layout_below="@+id/listen_button"
-        android:layout_alignRight="@+id/listen_button"
-        android:layout_alignEnd="@+id/listen_button"
-        android:layout_marginTop="43dp"
-        android:id="@+id/button2"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog" />
 </RelativeLayout>
